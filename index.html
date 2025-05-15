@@ -113,21 +113,36 @@
     }
 
     function showResult() {
-      const matched = products.filter(product => {
-        return Object.entries(product.conditions).every(([key, val]) => answers[key] === val);
-      });
+  const scored = products.map(product => {
+    let matchCount = 0;
+    let totalConditions = Object.keys(product.conditions).length;
 
-      const resultDiv = document.getElementById('question');
-      if (matched.length > 0) {
-        resultDiv.innerHTML = '<div class="result"><strong>おすすめ製品:</strong><br>' + matched.map(p => p.name).join('<br>') + '</div>';
-      } else {
-        resultDiv.innerHTML = '<div class="result">ご希望条件に合う製品情報が見つかりませんでした。</div>';
+    for (const [key, value] of Object.entries(product.conditions)) {
+      if (answers[key] === value) {
+        matchCount++;
       }
-
-      document.getElementById('yesBtn').style.display = 'none';
-      document.getElementById('noBtn').style.display = 'none';
-      document.getElementById('restartBtn').style.display = 'inline-block';
     }
+
+    const score = matchCount / totalConditions;
+    return { ...product, score };
+  });
+
+  // スコア順にソート（降順）
+  const sorted = scored.sort((a, b) => b.score - a.score);
+
+  const resultDiv = document.getElementById('question');
+  if (sorted.length > 0 && sorted[0].score > 0) {
+    const topProducts = sorted.slice(0, 3); // 上位3つ表示
+    resultDiv.innerHTML = `<div class="result"><strong>おすすめ製品（マッチ度順）:</strong><br>${topProducts.map(p => `${p.name}（${Math.round(p.score * 100)}%）`).join('<br>')}</div>`;
+  } else {
+    resultDiv.innerHTML = '<div class="result">ご希望条件に近い製品が見つかりませんでした。</div>';
+  }
+
+  document.getElementById('yesBtn').style.display = 'none';
+  document.getElementById('noBtn').style.display = 'none';
+  document.getElementById('restartBtn').style.display = 'inline-block';
+}
+
 
     function restart() {
       document.getElementById('question').innerText = "エアコンコンサルを始めますか？";
