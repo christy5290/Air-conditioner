@@ -3,9 +3,9 @@ body {
   font-family: 'Arial', sans-serif;
   background-image: url("nojima_logo.png");
   background-repeat: no-repeat;
-  background-position: left bottom;
+  background-position: top left;
   background-size: 300px auto;
-  background-color: #d4e2fc;
+  background-color: #b8dbff;
   margin: 0;
   padding: 10px;
   height: 100vh;
