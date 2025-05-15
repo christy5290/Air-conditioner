@@ -99,3 +99,36 @@
         transform: translateY(0);
       }
     }
+@media screen and (max-width: 768px) {
+  body {
+    background-size: 80px auto;  /* 背景ロゴを少し小さく */
+    padding: 10px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+
+  #question {
+    font-size: 1.2em; /* 少し小さく調整（見やすい大きさ） */
+  }
+
+  .btn {
+    font-size: 1em;
+    padding: 10px 20px;
+    width: 100%; /* ボタン横幅いっぱい */
+    box-sizing: border-box;
+  }
+
+  .result {
+    font-size: 0.95em;
+    line-height: 1.5em;
+  }
+
+  .container {
+    padding: 0 10px;
+    align-items: center;
+  }
+}
