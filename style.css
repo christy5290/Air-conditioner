@@ -1,105 +1,131 @@
-
-@media screen and (max-width: 768px) {
-  body {
-  font-family: 'Ariall', sans-serif;
+/* 共通スタイル */
+body {
+  font-family: 'Arial', sans-serif;
   background-image: url("nojima_logo.png");
   background-repeat: no-repeat;
-  background-position: down left;   
-  background-size: 300px auto;    
-  background-color: #d4e2fc;          
+  background-position: left bottom;
+  background-size: 300px auto;
+  background-color: #d4e2fc;
   margin: 0;
   padding: 10px;
-  height: 100vh;                 
-  }
+  height: 100vh;
 }
-   
 
 .container {
   display: flex;
-  justify-content: center;  
-  align-items: center;     
-  height: auto;            
+  justify-content: center;
+  align-items: center;
+  height: auto;
 }
 
- 
 .card {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      max-width: 90%;
-      width: 100%;
-      text-align: center;
-      animation: fadeIn 0.5s ease-in-out;
-    }
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
 
-    #question {
-      font-size: 1.4em;
-      margin-bottom: 30px;
-      color: #333;
-      transition: opacity 0.3s ease;
-    }
+#question {
+  font-size: 1.4em;
+  margin-bottom: 30px;
+  color: #333;
+  transition: opacity 0.3s ease;
+}
 
-    .btn {
-      font-size: 1.1em;
-      padding: 12px 24px;
-      margin: 10px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.1s ease, background 0.3s ease;
-    }
+.btn {
+  font-size: 1.1em;
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.3s ease;
+}
 
-    .btn:active {
-      transform: scale(0.95);
-    }
+.btn:active {
+  transform: scale(0.95);
+}
 
-    .btn-yes {
-      background-color: #f67b79;
-      color: white;
-      }
+.btn-yes {
+  background-color: #f67b79;
+  color: white;
+}
 
-    .btn-yes:hover {
-      background-color: #f45652;
-    }
+.btn-yes:hover {
+  background-color: #f45652;
+}
 
-    .btn-no {
-      background-color: #9eb4fa;
-      color: white;
-     }
+.btn-no {
+  background-color: #9eb4fa;
+  color: white;
+}
 
-    .btn-no:hover {
-      background-color:#7996f6;
-    }
+.btn-no:hover {
+  background-color: #7996f6;
+}
 
-    .btn-start {
-      background-color: #8aaef5;
-      color: white;
-    }
-    
-    .btn-start:hover{
-     background-color:#5b8ef1;
-    }
+.btn-start {
+  background-color: #8aaef5;
+  color: white;
+}
 
-    .btn-restart {
-      background-color: #9E9E9E;
-      color: white;
-    }
+.btn-start:hover {
+  background-color: #5b8ef1;
+}
 
-    .result {
-      font-size: 1em;
-      color: #444;
-      text-align: left;
-      line-height: 1.6em;
-      animation: fadeIn 0.5s ease;
-    }
+.btn-restart {
+  background-color: #9e9e9e;
+  color: white;
+}
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.result {
+  font-size: 1em;
+  color: #444;
+  text-align: left;
+  line-height: 1.6em;
+  animation: fadeIn 0.5s ease;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+  body {
+    background-size: 200px auto;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  #question {
+    font-size: 1.2em;
+  }
+
+  .btn {
+    font-size: 1em;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
