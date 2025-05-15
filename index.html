@@ -23,7 +23,9 @@
       { key: 'eco', question: '省エネ性能は高めがいい？' },
       { key: 'autoClean', question: '二週間に一度掃除する？' },
       { key: 'smell', question: '臭いを抑えたい？' },
-      { key: 'rakuClean', question: '掃除の手間を一切なくしたい？' }
+      { key: 'rakuClean', question: 'ダストボックスの掃除を楽にしたい？' },
+      { key: 'kasitsu', question: '加湿機能は必要？'},
+      { key: 'windmove', question: '同じ部屋に暑がりさん、寒がりさんがいる？'}
 
     ];
 
@@ -31,59 +33,130 @@
 
       {　//ダイキン
         name: 'ダイキン Rシリーズ',
-        conditions: {inpei:'no',airClean: 'yes', eco: 'yes',smell:'yes',rakuClean:'no' }
+        conditions: {inpei:'no',airClean: 'yes', eco: 'yes',smell:'yes',rakuClean:'no',kasitsu:'yes',windmove:'no'}
       },
       
       {　
         name: 'ダイキン Aシリーズ',
-        conditions: {inpei:'no',airClean: 'yes', eco: 'yes',smell:'yes',rakuClean:'no' }
+        conditions: {inpei:'no',airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes',rakuClean:'no',kasitsu:'no',windmove:'no' }
       },
       
       {　
-        name: 'ダイキン F/Cシリーズ',
-        conditions: {inpei:'no',airClean: 'yes', eco: 'yes',smell:'yes',rakuClean:'no' }
+        name: 'ダイキン Fシリーズ',
+        conditions: {inpei:'no',airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes',rakuClean:'no',kasitsu:'no',windmove:'no' }
       },
      {　
         name: 'ダイキン Fシリーズ',
-        conditions: {inpei:'yes',airClean: 'yes', eco: 'yes',smell:'yes',rakuClean:'no' }
+        conditions: {inpei:'yes',airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes',rakuClean:'no',kasitsu:'no',windmove:'no' }
       },
+
+       {　
+        name: 'ダイキン Cシリーズ',
+        conditions: {inpei:'yes',airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes',rakuClean:'no' ,,kasitsu:'no',windmove:'no'}
+      },
+
+     {　
+        name: 'ダイキン Cシリーズ',
+        conditions: {inpei:'no',airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes',rakuClean:'no',kasitsu:'no',windmove:'no' }
+      },
+      
 　　 {
         name: 'ダイキン Eシリーズ',
-        conditions: {inpei: 'yes', airClean: 'yes', eco: 'no', autoClean: 'no',smell:'no' ,rakuClean:'no'}
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'no', autoClean: 'yes',smell:'no' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+       {　
+        name: 'ダイキン Eシリーズ',
+        conditions: {inpei:'no',airClean: 'yes', eco: 'no', autoClean: 'yes',smell:'no',rakuClean:'no',,kasitsu:'no',windmove:'no' }
       },
 
       {//三菱
         name: '三菱 GEシリーズ',
-        conditions: {inpei: 'yes', airClean: 'no', eco: 'no' ,smell:'no',rakuClean:'yes'}
+        conditions: {inpei: 'yes', airClean: 'no', eco: 'no' , autoClean: 'yes',smell:'no',rakuClean:'yes',,kasitsu:'no',windmove:'no'}
       },
 
        {
         name: '三菱 Sシリーズ',
-        conditions: {inpei: 'yes', airClean: 'no', eco: 'no', autoClean: 'no',smell:'yes' ,rakuClean:'yes'}
+        conditions: {inpei: 'yes', airClean: 'no', eco: 'no', autoClean: 'yes',smell:'yes' ,rakuClean:'yes',kasitsu:'no',windmove:'no'}
       },
 
        {
         name: '三菱 XDシリーズ',
-        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'yes',smell:'yes' ,rakuClean:'yes'}
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'yes',kasitsu:'no',windmove:'yes'}
       },
 
        {
         name: '三菱 Xシリーズ',
-        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'yes',smell:'yes' ,rakuClean:'yes'}
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'yes',kasitsu:'no',windmove:'yes'}
       },
 
        {
         name: '三菱 Zシリーズ',
-        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'yes',smell:'yes' ,rakuClean:'yes'}
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'yes',kasitsu:'no',windmove:'yes'}
+      },
+
+       {
+        name: '三菱 FZシリーズ',
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'yes',kasitsu:'no',windmove:'yes'}
       },
      
+　　　　 {//富士通
+        name: '富士通 Cシリーズ',
+        conditions: {inpei: 'yes', airClean: 'no', eco: 'no', autoClean: 'yes',smell:'no' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+      {
+        name: '富士通 Cシリーズ',
+        conditions: {inpei: 'no', airClean: 'no', eco: 'no', autoClean: 'yes',smell:'no' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+       {
+        name: '富士通 Dシリーズ',
+        conditions: {inpei: 'yes', airClean: 'no', eco: 'no', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+       {
+        name: '富士通 Dシリーズ',
+        conditions: {inpei: 'no', airClean: 'no', eco: 'no', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+       {
+        name: '富士通 Wシリーズ',
+        conditions: {inpei: 'yes', airClean: 'no', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+      {
+        name: '富士通 Wシリーズ',
+        conditions: {inpei: 'no', airClean: 'no', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+      {
+        name: '富士通 Zシリーズ',
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+        {
+        name: '富士通 Zシリーズ',
+        conditions: {inpei: 'no', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+        {
+        name: '富士通 Xシリーズ',
+        conditions: {inpei: 'yes', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+
+        {
+        name: '富士通 Xシリーズ',
+        conditions: {inpei: 'no', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no'}
+      },
+      
       {
         name: 'パナソニック EX/Xシリーズ',
-        conditions: {inpei: 'no', airClean: 'yes', eco: 'yes', autoClean: 'yes',smell:'yes',rakuClean:'yes' }
+        conditions: {inpei: 'no', airClean: 'yes', eco: 'yes', autoClean: 'no',smell:'yes',rakuClean:'yes' }
       },
       {
         name: 'シャープ AY-Nシリーズ',
-        conditions: {inpei: 'no', airClean: 'no', eco: 'no', autoClean: 'no',smell:'yes',rakuClean:'no' }
+        conditions: {inpei: 'no', airClean: 'no', eco: 'no', autoClean: 'yes',smell:'yes',rakuClean:'no' }
       }
     ];
 
