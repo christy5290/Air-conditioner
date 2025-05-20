@@ -99,7 +99,7 @@
         name: '富士通 Cシリーズ',
         conditions: {inpei: 'no', airClean: 'no',eco: 'no',autoClean: 'yes',smell:'no' ,rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'no',onsei:'no',kabi:'no',nowind:'yes',smart:'yes'}
       },
-      
+    
        {
         name: '富士通 Dシリーズ',
         conditions: {inpei: 'no', airClean: 'no',eco: 'no',autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'no',onsei:'yes',kabi:'yes',nowind:'no',smart:'yes'}
@@ -119,10 +119,10 @@
         name: '富士通 Zシリーズ',
         conditions: {inpei: 'no', airClean: 'yes',eco: 'yes',autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'yes',onsei:'yes',kabi:'yes',nowind:'no',smart:'no'}
       },
-      
-        {
+
+       {
         name: '富士通 Lシリーズ',
-        conditions: {inpei: 'yes', airClean: 'yes',eco: 'yes',autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'yes',onsei:'yes',kabi:'yes',nowind:'no',smart:'no'}
+        conditions: {inpei: 'yes', airClean: 'no',eco: 'no',autoClean: 'no',smell:'no',rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'no',onsei:'no',kabi:'no',nowind:'no',smart:'yes'}
       },
 
        {
@@ -149,7 +149,7 @@
         name: '日立 WNシリーズ',
         conditions: {inpei: 'no', airClean: 'no',eco: 'no',autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'no',onsei:'no',kabi:'yes',nowind:'no',smart:'yes'}
       },
-        { 
+        {
         name: '日立 WNシリーズ',
         conditions: {inpei: 'yes', airClean: 'no',eco: 'no',autoClean: 'no',smell:'yes' ,rakuClean:'no',kasitsu:'no',windmove:'no',nagamochi:'no',onsei:'no',kabi:'yes',nowind:'no',smart:'yes'}
       },
@@ -232,20 +232,25 @@
     }
 
     function showResult() {
-      let filteredProducts = [...products]; // products配列のシャローコピーを作成
+      let currentProducts = [...products]; // products配列のシャローコピーを作成
 
-      // 「隠蔽配管」が「はい」の場合の特別なフィルター
+      // 「隠蔽配管」が「はい」の場合の特別なフィルターを適用
       if (answers['inpei'] === 'yes') {
-        const allowedInpeiModels = ['日立 WNシリーズ', 'ダイキン Cシリーズ', 'ダイキン Eシリーズ', '富士通 Wシリーズ', '富士通 Lシリーズ'];
-        filteredProducts = filteredProducts.filter(product => allowedInpeiModels.includes(product.name));
+        const allowedNamesForInpeiYes = ['日立 WNシリーズ', 'ダイキン Cシリーズ', 'ダイキン Eシリーズ', '富士通 Wシリーズ', '富士通 Lシリーズ'];
+        currentProducts = currentProducts.filter(product =>
+          product.conditions.inpei === 'yes' && // 隠蔽配管対応の製品のみ
+          allowedNamesForInpeiYes.includes(product.name) // かつ、指定された名前の製品のみ
+        );
       }
 
-      const scored = filteredProducts.map(product => {
+      // その他の条件に基づいたスコアリング
+      const scored = currentProducts.map(product => {
         let matchCount = 0;
-        // 条件の数を正しくカウントするために、answersのキーとproductsの条件のキーが一致するもののみを対象にする
-        let relevantConditionsCount = 0; 
+        let relevantConditionsCount = 0;
+
         for (const [key, value] of Object.entries(product.conditions)) {
-            if (answers.hasOwnProperty(key)) { // 質問された項目のみを評価対象とする
+            // ユーザーの回答がある質問のみを関連条件としてカウントする
+            if (answers.hasOwnProperty(key)) {
                 relevantConditionsCount++;
                 if (answers[key] === value) {
                     matchCount++;
@@ -253,7 +258,6 @@
             }
         }
 
-        // 関連する条件がない場合はスコアを0とするか、他の方法で処理する
         const score = relevantConditionsCount > 0 ? matchCount / relevantConditionsCount : 0;
         return { ...product, score };
       });
